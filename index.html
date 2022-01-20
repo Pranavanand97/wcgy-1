@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Date Jobs</title>
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.2/tailwind.min.css" rel="stylesheet">
+        <script src="https://unpkg.com/@themesberg/flowbite@1.3.0/dist/flowbite.bundle.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js" integrity="sha512-RNLkV3d+aLtfcpEyFG8jRbnWHxUqVZozacROI4J2F1sTaDqo1dPQYs01OMi1t1w9Y2FdbSCDSQ2ZVdAC8bzgAg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <style>
+          img {
+            filter:
+              sepia(1) hue-rotate(190deg) opacity(.46) grayscale(.7)
+          }
+       
+          .has-mask {
+            position: relative;
+            clip: rect(10px, 150px, 130px, 10px);
+          }
+        </style>
+  </head>      
+        
+<body>
+    <div class="container w-full max-w-7xl bg-white ">
+        <!--fixed inset-x-0 navbar-inverse-->
+        <div x-data="{ open: false }" class="flex flex-col max-w-screen-xl p-5
+      mx-auto
+      md:items-center md:justify-between md:flex-row md:px-6 z-10
+      lg:px-8 
+      ">
+    
+          <div class="flex flex-row items-center justify-between lg:justify-start z-10">
+            <a href="https://pranavanand97.github.io/projectC/index.html" class="
+          text-4xl
+          font-bold
+          tracking-tighter
+          text-blue-600
+          transition
+          duration-500
+          ease-in-out
+          transform
+          tracking-relaxed
+          lg:pr-3
+          z-50
+        "> WeCanGrowYou </a>
+            <button class=" z-50 rounded-lg md:hidden focus:outline-none focus:shadow-outline" @click="open = !open">
+              <svg fill="currentColor" viewBox="0 0 20 20" class="w-8 h-8">
+                <path x-show="!open" fill-rule="evenodd"
+                  d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z"
+                  clip-rule="evenodd"></path>
+                <path x-show="open" fill-rule="evenodd"
+                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                  clip-rule="evenodd" style="display: none"></path>
+              </svg>
+            </button>
+          </div>
+          <nav :class="{'flex': open, 'hidden': !open} "
+            class="z-50 flex-col items-center flex-grow hidden pb-4 border-blue-600 md:pb-0 md:flex md:justify-end md:flex-row lg:border-l-2 lg:pl-2">
+            <a class=" z-50
+            font-semibold
+          px-4
+          py-2
+          mt-2
+          text-sm text-gray-500
+          md:mt-0
+          hover:text-blue-600
+          focus:outline-none focus:shadow-outline
+        " href="#">About</a>
+            <a class="
+            z-50
+            font-semibold
+          px-4
+          py-2
+          mt-2
+          text-sm text-gray-500
+          md:mt-0
+          hover:text-blue-600
+          focus:outline-none focus:shadow-outline
+        " href="https://pranavanand97.github.io/projectC/contactUs.html">Contact Us</a>
+            <div @click.away="open = false" class="relative" x-data="{ open: false }">
+              <button @click="open = !open" class="z-50
+              font-semibold
+            flex flex-row
+            items-center
+            w-full
+            px-4
+            py-2
+            mt-2
+            text-sm text-left text-gray-500
+            md:w-auto md:inline md:mt-0
+            hover:text-blue-600
+            focus:outline-none focus:shadow-outline 
+          ">
+                <span>What we do? </span>
+                <svg fill="currentColor" viewBox="0 0 20 20" :class="{'rotate-180': open, 'rotate-0': !open}"
+                  class="z-50 inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform rotate-0 md:-mt-1">
+                  <path fill-rule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clip-rule="evenodd"></path>
+                </svg>
+              </button>
+              <div x-show="open" x-transition:enter="transition ease-out duration-100"
+                x-transition:enter-start="transform opacity-0 scale-95"
+                x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75"
+                x-transition:leave-start="transform opacity-100 scale-100"
+                x-transition:leave-end="transform opacity-0 scale-95" class="z-50
+            absolute
+            right-0
+            z-9999
+            w-full
+            mt-2
+            origin-top-right
+            rounded-md
+            shadow-lg
+            md:w-60
+          " style="display: none">
+                <div class="px-2 py-2 bg-white rounded-md shadow">
+                  <a class="z-50
+                block
+                px-4
+                py-2
+                mt-2
+                text-sm text-gray-500
+                md:mt-0
+                hover:text-blue-600
+                focus:outline-none focus:shadow-outline
+              " href="https://pranavanand97.github.io/projectC/ViewJobs.html">We'll help you find a Job</a>
+                  <a class="z-50
+                block
+                px-4
+                py-2
+                mt-2
+                text-sm text-gray-500
+                md:mt-0
+                hover:text-blue-600
+                focus:outline-none focus:shadow-outline
+              " href="#">We'll help you build a Startup</a>
+                  <a class="z-50
+                block
+                px-4
+                py-2
+                mt-2
+                text-sm text-gray-500
+                md:mt-0
+                hover:text-blue-600
+                focus:outline-none focus:shadow-outline
+              " href="https://pranavanand97.github.io/projectC/ViewJobs.html">We'll help grab your dreams.</a>
+                </div>
+              </div>
+            </div>
+    
+            <div class="inline-flex items-center gap-2 list-none lg:ml-auto">
+              <a class="
+            font-medium
+          px-4
+          py-2
+          mt-2
+          text-sm text-gray-300
+          md:mt-0
+          hover:text-blue-600
+          focus:outline-none focus:shadow-outline">Login as </a>
+    
+    
+              <a href="https://pranavanand97.github.io/projectC/StudentLogin.html">
+                <button class="
+            items-center
+            block
+            px-10
+            py-2.5
+            text-base
+            font-medium
+            text-center text-blue-600
+            transition
+            duration-500
+            ease-in-out
+            transform
+            border-2 border-white
+            shadow-md
+            rounded-xl
+            focus:outline-none
+            focus:ring-2
+            focus:ring-offset-2
+            focus:ring-gray-500
+          "> Student </button></a>
+    
+              <a href="https://pranavanand97.github.io/projectC/EmployerLogin.html">
+                <button class="
+            items-center
+            block
+            px-10
+            py-3
+            text-base
+            font-medium
+            text-center text-white
+            transition
+            duration-500
+            ease-in-out
+            transform
+            bg-blue-600
+            rounded-xl
+            hover:bg-blue-700
+            focus:outline-none
+            focus:ring-2
+            focus:ring-offset-2
+            focus:ring-blue-500
+          "> Employer </button></a>
+            </div>
+          </nav>
+        </div>
+      </div>
+    
+      <!-- the nav Bar ends Here-->
+    
+     <!-- the Body Starts Here-->
+    
+      <section class="w-full items-center bg-white dark:bg-wickeddark">
+        <div class="
+          relative
+          items-center
+          w-full
+          px-5
+          py-10
+          mx-auto
+          md:px-12
+          lg:px-16
+          max-w-7xl
+          lg:py-15
+          ">
+          <div class="flex w-full mx-auto text-left">
+            <div class="relative inline-flex items-center mx-auto align-middle">
+              <div class="pb-12 text-center">
+                <h1 class="
+                max-w-5xl
+                text-2xl
+                font-bold
+                leading-none
+                tracking-tighter
+                text-neutral-600
+                md:text-5xl
+                lg:text-6xl lg:max-w-7xl
+              "> Date your dream job here </h1>
+    
+                <div class="flex object-center mt-8 mr-4 ml-40 mb-8 space-x-8 bg-transparent rounded-xl ">
+                  <div class="flex bg-gray-100 p-3 w-76 space-x-4 rounded-lg items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-8 opacity-30" fill="none" viewBox="0 0 24 24"
+                      stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                    <input class="bg-gray-100 outline-none" type="text" placeholder="Peek into available jobs..." />
+                    <button class="
+                  items-center
+                  block
+                  px-4
+                  py-2.5
+                  text-base
+                  font-medium
+                  bg-red-600
+                  text-center text-white
+                  transition
+                  duration-500
+                  ease-in-out
+                  transform
+                  shadow-lg
+                  rounded-lg
+                  focus:outline-none
+                  focus:ring-2
+                  focus:ring-offset-2
+                  focus:ring-gray-500
+                  "> Search </button>
+                  </div>
+                </div>
+    
+                <div class="container p-0 py-8 mx-auto">
+                  <div class="flex flex-wrap -m-4 text-center">
+                    <div class="p-0 sm:w-1/4 w-1/2">
+                      <h1 class="title-font text-2xl
+                        font-bold sm:text-4xl text-3xl text-gray-500">12.7K</h1>
+                      <p class="leading-relaxed">Openings</p>
+                    </div>
+                    <div class="p-0 sm:w-1/4 w-1/2">
+                      <h2 class="title-font text-2xl
+                        font-bold sm:text-4xl text-3xl text-gray-500">1.8K</h2>
+                      <p class="leading-relaxed">Companies</p>
+                    </div>
+                    <div class="p-0 sm:w-1/4 w-1/2">
+                      <h2 class="title-font text-2xl
+                        font-bold sm:text-4xl text-3xl text-gray-500">35</h2>
+                      <p class="leading-relaxed">Countries</p>
+                    </div>
+                    <div class="p-0 sm:w-1/4 w-1/2">
+                      <h2 class="title-font text-2xl
+                        font-bold sm:text-4xl text-3xl text-gray-500">43</h2>
+                      <p class="leading-relaxed">From F-500 </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+    <h4 class="justify-center text-xl text-bold text-center text-gray-300">       </h4>
+    
+
+    
+
+    <div id="app"></div>
+    <div id="jobsOne"></div>
+
+    <script src="assets/js/main.js"></script>
+
+
+
+<!-- footer starts below-->
+<div class="flex items-center flex-wrap pb-4 mb-4 border-b-2 border-gray-100 mt-auto w-full">
+  <span class="text-gray-400 inline-flex items-center leading-none text-sm"></span></div>
+
+
+<footer class="bg-white" aria-labelledby="footer-heading">
+  <h2 id="footer-heading" class="sr-only">Footer</h2>
+  <div class="px-5 py-12 mx-auto max-w-7xl lg:py-16 md:px-12 lg:px-8">
+    <div class="xl:grid xl:grid-cols-3 xl:gap-8 ">
+      <div class="space-y-8 xl:col-span-1 bg-gray-80">
+        <a href="#" class="
+      text-lg
+      font-bold
+      tracking-tighter
+      text-blue-600
+      transition
+      duration-500
+      ease-in-out
+      transform
+      tracking-relaxed
+      lg:pr-8
+    "> WeCanGrowYou &nbsp; | &nbsp; wcgy </a>
+        <p class="w-1/2 mt-2 text-sm text-gray-500"> There is no shortcuts to your Dream Job, Let's Workhard to Grab it Today!</p>
+      </div>
+      <div class="grid grid-cols-2 gap-8 mt-12 xl:mt-0 xl:col-span-2">
+        <div class="md:grid md:grid-cols-2 md:gap-8">
+          <div>
+            <h3 class="
+          text-xs
+          font-semibold
+          tracking-wider
+          text-blue-600
+          uppercase
+        "> We offer </h3>
+            <ul role="list" class="mt-4 space-y-4">
+              <li>
+                <a href="https://pranavanand97.github.io/projectC/internships.html" class="text-sm font-normal text-gray-500 hover:text-gray-900"> Internships </a>
+              </li>
+              <li>
+                <a href="https://pranavanand97.github.io/projectC/Parttime.html" class="text-sm font-normal text-gray-500 hover:text-gray-900"> Part-time Jobs </a>
+              </li>
+              <li>
+                <a href="https://pranavanand97.github.io/projectC/FullTime.html" class="text-sm font-normal text-gray-500 hover:text-gray-900"> Full-time Jobs </a>
+              </li>
+            </ul>
+          </div>
+          <div class="mt-12 md:mt-0">
+            <h3 class="
+          text-xs
+          font-semibold
+          tracking-wider
+          text-blue-600
+          uppercase
+        "> Support </h3>
+            <ul role="list" class="mt-4 space-y-4">
+              <li>
+                <a href="https://doodle.com/" target="_blank" rel="noopener noreferrer" class="text-sm font-normal text-gray-500 hover:text-gray-900"> Book a Call </a>
+              </li>
+              <li>
+                <a href="https://pranavanand97.github.io/projectC/faq.html" class="text-sm font-normal text-gray-500 hover:text-gray-900"> FAQ </a>
+              </li>
+              <li>
+                <a href="#" class="text-sm font-normal text-gray-500 hover:text-gray-900"> Knock here with iDeas </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="hidden lg:justify-end md:grid md:grid-cols-1">
+          <div class="w-full mt-12 md:mt-0">
+            <div class="mt-8 lg:justify-end xl:mt-0">
+              <h3 class="
+            text-xs
+            font-semibold
+            tracking-wider
+            text-blue-600
+            uppercase
+          "> Job Alert Mailer </h3>
+              <p class="mt-4 text-sm text-gray-500 lg:ml-auto"> Sorted Job Alerts, sent to your inbox weekly. </p>
+              <div class="inline-flex items-center gap-2 list-none lg:ml-auto">
+                <form action="" method="post" id="revue-form" name="revue-form" target="_blank" class="
+              p-1
+              mt-4
+              transition
+              duration-500
+              ease-in-out
+              transform
+              border2
+              bg-gray-50
+              rounded-xl
+              sm:max-w-lg sm:flex
+            ">
+                  <div class="flex-1 min-w-0 revue-form-group">
+                    <label for="member_email" class="sr-only">Email address</label>
+                    <input id="cta-email" type="email" class="
+                  block
+                  w-full
+                  px-5
+                  py-3
+                  text-base text-neutral-600
+                  placeholder-gray-300
+                  transition
+                  duration-500
+                  ease-in-out
+                  transform
+                  bg-transparent
+                  border border-transparent
+                  rounded-md
+                  focus:outline-none
+                  focus:border-transparent
+                  focus:ring-2
+                  focus:ring-white
+                  focus:ring-offset-2
+                  focus:ring-offset-gray-300
+                " placeholder="Enter your email  ">
+                  </div>
+                  <div class="mt-4 sm:mt-0 sm:ml-3 revue-form-actions">
+                    <button type="submit" value="Subscribe" name="member[subscribe]" id="member_submit" class="
+                  block
+                  w-full
+                  px-5
+                  py-3
+                  text-base
+                  font-medium
+                  text-white
+                  bg-blue-600
+                  border border-transparent
+                  rounded-lg
+                  shadow
+                  hover:bg-blue-700
+                  focus:outline-none
+                  focus:ring-2
+                  focus:ring-white
+                  focus:ring-offset-2
+                  focus:ring-offset-gray-300
+                  sm:px-10
+                "> Notify me </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="
+px-5
+py-12
+mx-auto
+bg-gray-50
+max-w-7xl
+sm:px-6
+md:flex md:items-center md:justify-between
+lg:px-8
+">
+    <div class="flex justify-center mb-8 space-x-6 md:order-last md:mb-0">
+      <a href="#" class="text-gray-400 hover:text-gray-500">
+        <span class="sr-only">Facebook</span>
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"></path>
+        </svg>
+      </a>
+      <a href="#" class="text-gray-400 hover:text-gray-500">
+        <span class="sr-only">Instagram</span>
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd"></path>
+        </svg>
+      </a>
+      <a href="#" class="text-gray-400 hover:text-gray-500">
+        <span class="sr-only">Twitter</span>
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
+        </svg>
+      </a>
+      <a href="#" class="text-gray-400 hover:text-gray-500">
+        <span class="sr-only">GitHub</span>
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path>
+        </svg>
+      </a>
+      <a href="#" class="text-gray-400 hover:text-gray-500">
+        <span class="sr-only">Discord</span>
+      <svg class="w-9 h-9" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M13.545 2.907a13.227 13.227 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.19 12.19 0 0 0-3.658 0 8.258 8.258 0 0 0-.412-.833.051.051 0 0 0-.052-.025c-1.125.194-2.22.534-3.257 1.011a.041.041 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032c.001.014.01.028.021.037a13.276 13.276 0 0 0 3.995 2.02.05.05 0 0 0 .056-.019c.308-.42.582-.863.818-1.329a.05.05 0 0 0-.01-.059.051.051 0 0 0-.018-.011 8.875 8.875 0 0 1-1.248-.595.05.05 0 0 1-.02-.066.051.051 0 0 1 .015-.019c.084-.063.168-.129.248-.195a.05.05 0 0 1 .051-.007c2.619 1.196 5.454 1.196 8.041 0a.052.052 0 0 1 .053.007c.08.066.164.132.248.195a.051.051 0 0 1-.004.085 8.254 8.254 0 0 1-1.249.594.05.05 0 0 0-.03.03.052.052 0 0 0 .003.041c.24.465.515.909.817 1.329a.05.05 0 0 0 .056.019 13.235 13.235 0 0 0 4.001-2.02.049.049 0 0 0 .021-.037c.334-3.451-.559-6.449-2.366-9.106a.034.034 0 0 0-.02-.019Zm-8.198 7.307c-.789 0-1.438-.724-1.438-1.612 0-.889.637-1.613 1.438-1.613.807 0 1.45.73 1.438 1.613 0 .888-.637 1.612-1.438 1.612Zm5.316 0c-.788 0-1.438-.724-1.438-1.612 0-.889.637-1.613 1.438-1.613.807 0 1.451.73 1.438 1.613 0 .888-.631 1.612-1.438 1.612Z"/></svg>
+        
+      </a>
+    </div>
+    <div class="mt-8 md:mt-0 md:order-1">
+      <span class="mt-2 text-sm font-light text-gray-500"> Made with ❤️  &nbsp; by <a href="https://pranavanand97.github.io/projectC/TeamPageDetails.html" class="mx-2 text-wickedblue hover:text-gray-500" 
+        rel="noopener noreferrer"> Team WeCanGrowYou <!--<span style="color: #e25555;">&hearts;</span>--> </a> <a>&#9679;</a>
+        <a href="#" class="mx-2 text-wickedblue hover:text-blue-500" rel="noopener noreferrer"> Click here to grab our Press Kit </a> <a>&#9679;</a>
+        <a href="#" class="mx-2 text-wickedblue hover:text-blue-500" rel="noopener noreferrer"> Privacy Policy & Terms of Use </a><a>&#9679;</a>
+        <a href="#" class="mx-2 text-wickedblue hover:text-blue-500" rel="noopener noreferrer"> Work with Us </a></span>
+    </div>
+  </div>
+</footer>
+
+
+<script id="userA" type="text/x-handlebars-template">
+  {{#each user}}
+    <!--Job Card-->
+    <section class="ml-10 pl-10 items-center justify-evenly place-content-stretch float-left">
+      <div class="max-w-lg min-w-0 mx-auto z-10 justify-start">
+        <div class="flex flex-col">
+          <div class="bg-white border border-white shadow-lg  rounded-3xl p-4 m-4">
+            <div class="flex-none sm:flex">
+              <div class=" relative h-32 w-32   sm:mb-0 mb-3">
+                <img
+                  src="{{photo}}"
+                  alt="pranav" class=" w-32 h-32 shadow-lg outline-2 rounded-2xl">
+
+              </div>
+              <div class="flex-auto sm:ml-5 justify-evenly">
+                <div class="flex items-center justify-between sm:mt-2">
+                  <div class="flex items-center">
+                    <div class="flex flex-col">
+                      <div class="w-full flex-none text-lg text-gray-800 font-bold leading-none">{{name}}&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp; <span class="float-right bg-gray-100 text-gray-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">Job ID: {{jobId}}</span></div>
+                      <div class="flex-auto text-gray-500 my-1">
+                        <span class="mr-3 ">{{company}}</span><span
+                          class="mr-3 border-r border-gray-200  max-h-0"></span><span>{{locationPlace}}, {{locationCountryCode}}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex flex-row items-center">
+                  <span
+                    class="bg-blue-100 text-blue-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800">
+                    <svg text-sm class="mr-1 w-3 h-3" fill="currentColor" viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+                        clip-rule="evenodd"></path>
+                    </svg>
+                    {{type}} | {{kind}}
+                  </span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <span
+                    class="bg-yellow-100 text-red-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-red-200 dark:text-red-900">Apply
+                    by {{lastDateToApply}}</span>
+
+                  <div class="flex-1 inline-flex  hidden items-center">
+                    <img class="w-5 h-5"
+                      src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDY0IDY0IiBoZWlnaHQ9IjY0cHgiIGlkPSJMYXllcl8xIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCA2NCA2NCIgd2lkdGg9IjY0cHgiIHhtbDpzcGFjZT0icHJlc2VydmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxwYXRoIGQ9Ik0zMiw3LjE3NEMxOC4zMTEsNy4xNzQsNy4xNzQsMTguMzExLDcuMTc0LDMyYzAsMTMuNjg5LDExLjEzNywyNC44MjYsMjQuODI2LDI0LjgyNmMxMy42ODksMCwyNC44MjYtMTEuMTM3LDI0LjgyNi0yNC44MjYgIEM1Ni44MjYsMTguMzExLDQ1LjY4OSw3LjE3NCwzMiw3LjE3NHogTTM4LjE3NCwzMi44NzRoLTQuMDM5YzAsNi40NTMsMCwxNC4zOTgsMCwxNC4zOThoLTUuOTg1YzAsMCwwLTcuODY4LDAtMTQuMzk4aC0yLjg0NXYtNS4wODggIGgyLjg0NXYtMy4yOTFjMC0yLjM1NywxLjEyLTYuMDQsNi4wNC02LjA0bDQuNDMzLDAuMDE3djQuOTM5YzAsMC0yLjY5NSwwLTMuMjE5LDBjLTAuNTI0LDAtMS4yNjgsMC4yNjItMS4yNjgsMS4zODZ2Mi45OWg0LjU2ICBMMzguMTc0LDMyLjg3NHoiLz48L3N2Zz4=">
+                    <img class="w-5 h-5"
+                      src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDU2LjY5MyA1Ni42OTMiIGhlaWdodD0iNTYuNjkzcHgiIGlkPSJMYXllcl8xIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCA1Ni42OTMgNTYuNjkzIiB3aWR0aD0iNTYuNjkzcHgiIHhtbDpzcGFjZT0icHJlc2VydmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxwYXRoIGQ9Ik0yOC4zNDgsNS4xNTdjLTEzLjYsMC0yNC42MjUsMTEuMDI3LTI0LjYyNSwyNC42MjVjMCwxMy42LDExLjAyNSwyNC42MjMsMjQuNjI1LDI0LjYyM2MxMy42LDAsMjQuNjIzLTExLjAyMywyNC42MjMtMjQuNjIzICBDNTIuOTcxLDE2LjE4NCw0MS45NDcsNS4xNTcsMjguMzQ4LDUuMTU3eiBNNDAuNzUyLDI0LjgxN2MwLjAxMywwLjI2NiwwLjAxOCwwLjUzMywwLjAxOCwwLjgwM2MwLDguMjAxLTYuMjQyLDE3LjY1Ni0xNy42NTYsMTcuNjU2ICBjLTMuNTA0LDAtNi43NjctMS4wMjctOS41MTMtMi43ODdjMC40ODYsMC4wNTcsMC45NzksMC4wODYsMS40OCwwLjA4NmMyLjkwOCwwLDUuNTg0LTAuOTkyLDcuNzA3LTIuNjU2ICBjLTIuNzE1LTAuMDUxLTUuMDA2LTEuODQ2LTUuNzk2LTQuMzExYzAuMzc4LDAuMDc0LDAuNzY3LDAuMTExLDEuMTY3LDAuMTExYzAuNTY2LDAsMS4xMTQtMC4wNzQsMS42MzUtMC4yMTcgIGMtMi44NC0wLjU3LTQuOTc5LTMuMDgtNC45NzktNi4wODRjMC0wLjAyNywwLTAuMDUzLDAuMDAxLTAuMDhjMC44MzYsMC40NjUsMS43OTMsMC43NDQsMi44MTEsMC43NzcgIGMtMS42NjYtMS4xMTUtMi43NjEtMy4wMTItMi43NjEtNS4xNjZjMC0xLjEzNywwLjMwNi0yLjIwNCwwLjg0LTMuMTJjMy4wNjEsMy43NTQsNy42MzQsNi4yMjUsMTIuNzkyLDYuNDgzICBjLTAuMTA2LTAuNDUzLTAuMTYxLTAuOTI4LTAuMTYxLTEuNDE0YzAtMy40MjYsMi43NzgtNi4yMDUsNi4yMDYtNi4yMDVjMS43ODUsMCwzLjM5NywwLjc1NCw0LjUyOSwxLjk1OSAgYzEuNDE0LTAuMjc3LDIuNzQyLTAuNzk1LDMuOTQxLTEuNTA2Yy0wLjQ2NSwxLjQ1LTEuNDQ4LDIuNjY2LTIuNzMsMy40MzNjMS4yNTctMC4xNSwyLjQ1My0wLjQ4NCwzLjU2NS0wLjk3NyAgQzQzLjAxOCwyMi44NDksNDEuOTY1LDIzLjk0Miw0MC43NTIsMjQuODE3eiIvPjwvc3ZnPg==">
+                    <img class="w-5 h-5"
+                      src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGhlaWdodD0iNjdweCIgaWQ9IkxheWVyXzEiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDY3IDY3OyIgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgNjcgNjciIHdpZHRoPSI2N3B4IiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48cGF0aCBkPSJNNTAuODM3LDQ4LjEzN1YzNi40MjVjMC02LjI3NS0zLjM1LTkuMTk1LTcuODE2LTkuMTk1ICBjLTMuNjA0LDAtNS4yMTksMS45ODMtNi4xMTksMy4zNzRWMjcuNzFoLTYuNzljMC4wOSwxLjkxNywwLDIwLjQyNywwLDIwLjQyN2g2Ljc5VjM2LjcyOWMwLTAuNjA5LDAuMDQ0LTEuMjE5LDAuMjI0LTEuNjU1ICBjMC40OS0xLjIyLDEuNjA3LTIuNDgzLDMuNDgyLTIuNDgzYzIuNDU4LDAsMy40NCwxLjg3MywzLjQ0LDQuNjE4djEwLjkyOUg1MC44Mzd6IE0yMi45NTksMjQuOTIyYzIuMzY3LDAsMy44NDItMS41NywzLjg0Mi0zLjUzMSAgYy0wLjA0NC0yLjAwMy0xLjQ3NS0zLjUyOC0zLjc5Ny0zLjUyOHMtMy44NDEsMS41MjQtMy44NDEsMy41MjhjMCwxLjk2MSwxLjQ3NCwzLjUzMSwzLjc1MywzLjUzMUgyMi45NTl6IE0zNCw2NCAgQzE3LjQzMiw2NCw0LDUwLjU2OCw0LDM0QzQsMTcuNDMxLDE3LjQzMiw0LDM0LDRzMzAsMTMuNDMxLDMwLDMwQzY0LDUwLjU2OCw1MC41NjgsNjQsMzQsNjR6IE0yNi4zNTQsNDguMTM3VjI3LjcxaC02Ljc4OXYyMC40MjcgIEgyNi4zNTR6IiBzdHlsZT0iZmlsbC1ydWxlOmV2ZW5vZGQ7Y2xpcC1ydWxlOmV2ZW5vZGQ7ZmlsbDojMDEwMTAxOyIvPjwvc3ZnPg==">
+                  </div>
+                </div>
+                <div class="flex pt-2  text-sm text-gray-500">
+                  <div class="flex-1 inline-flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20"
+                      fill="currentColor">
+                      <path
+                        d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z">
+                      </path>
+                    </svg>
+                    <p class="">{{headCountApplied}} Applied! </p>
+                  </div>
+                  
+                  <button
+                    class="flex-no-shrink bg-blue-500 hover:bg-blue-500 px-5 ml-4 py-2 text-xs shadow-sm hover:shadow-lg font-medium tracking-wider border-2  hover:border-blue-500 text-white rounded-lg transition ease-in duration-300" type="button" data-modal-toggle="hi-modal">Apply
+                    Now</button>
+                  <a href="modal.html" class="btn btn-primary mt-3"><button type="button" data-modal-toggle="hi-modal"> Apply Now</button></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--Job Card-->
+    
+    {{/each}}
+</script>
+
+</body>
+</html>
