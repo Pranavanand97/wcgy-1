@@ -2,9 +2,6 @@
 
 var jobsData =[];
 
-// let url = 'https://script.google.com/macros/s/AKfycbx_aTT55MY4ej4nd59dikrjqE1iMCihhZuHpNBBwcBjuN3uLKg8j1cxuUQZCBxD4Bfv/exec';
-
-
 var ourRequest = new XMLHttpRequest();
 ourRequest.open('GET', 'https://script.google.com/macros/s/AKfycbx_aTT55MY4ej4nd59dikrjqE1iMCihhZuHpNBBwcBjuN3uLKg8j1cxuUQZCBxD4Bfv/exec');
 ourRequest.onload = function() {
@@ -31,7 +28,6 @@ function createHTML(jobsData){
 
   var jobContainer = document.getElementById("jobsOne");
   jobContainer.innerHTML = ourGeneratedHTML;
-  console.log(jobsData);
 
 }
 
